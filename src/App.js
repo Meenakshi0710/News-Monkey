@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import Navbar from './Components/Navbar';
 import News from './Components/News';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Link
