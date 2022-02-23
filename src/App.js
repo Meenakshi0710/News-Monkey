@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import Navbar from './Components/Navbar';
 import News from './Components/News';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Routes,
   Route,
   Link
@@ -21,7 +21,7 @@ const App = () => {
     
     return (
       <div>
-      <Router>
+      <Router  >
       <LoadingBar
         height = {3}
         color='#f11946'
