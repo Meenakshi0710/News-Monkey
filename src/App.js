@@ -7,7 +7,8 @@ import News from './Components/News';
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Link
 } from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar';
 
@@ -20,7 +21,7 @@ const App = () => {
     
     return (
       <div>
-      <Router  >
+      <Router>
       <LoadingBar
         height = {3}
         color='#f11946'

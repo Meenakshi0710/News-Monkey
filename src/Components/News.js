@@ -36,12 +36,36 @@ const capitalizeFirstLetter = (string)=>{
       useEffect(() => {
         document.title = `${capitalizeFirstLetter(props.category)} - NewsMonkey`;
         updateNews();
-      })
+      }, [])
     
 
-    
+     const handlePrevClick = async () =>{
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=31f84d2eadaa4b02b4712dc1416936cb&page=${page - 1}&pageSize=${props.pageSize}`;
+        setLoading(true);
+        let data = await fetch(url);
+        let parseData = await data.json();
+        console.log(parseData);
+        setArticles(parseData.articles);
+        setTotalResults(parseData.totalResults);
+        setLoading(false);
 
-    
+    }
+
+    const handleNextClick = async () =>{
+        if(page+ 1 > Math.ceil(totalResults/props.pageSize)){
+
+        }else{
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=31f84d2eadaa4b02b4712dc1416936cb&page=${page + 1}&pageSize=${props.pageSize}`;
+        setLoading(true);
+        let data = await fetch(url);
+        let parseData = await data.json();
+        console.log(parseData);
+        setArticles(parseData.articles);
+        setTotalResults(parseData.totalResults);
+        setLoading(false);
+    }
+
+    }
 
     const fetchMoreData = async() => {
 
@@ -56,7 +80,7 @@ const capitalizeFirstLetter = (string)=>{
         setLoading(false);
        
         
-      }
+      };
     
     
         console.log("render");
@@ -97,8 +121,8 @@ const capitalizeFirstLetter = (string)=>{
                
          </>   
         );
-            }
-            
+    }
+
 News.defaultProps = {
     country : "in",
     pageSize : 8
